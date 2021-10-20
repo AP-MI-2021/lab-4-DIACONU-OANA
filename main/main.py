@@ -81,7 +81,7 @@ def get_nr_elemente_pare(lst1,lst2):
     :param lst2: a doua lista de int-uri
     :return: True daca cele doua liste au acelasi numar de elemente pare,False in caz contrar
     """
-    if result1(nrp1) == result2(nrp2):
+    if nr_pare_1(lst1) == nr_pare_2(lst2):
         return True
     return False
 
@@ -95,7 +95,27 @@ def show_nr_elem_pare(lst1,lst2):
     result= get_nr_elemente_pare(lst1,lst2)
     print(f' Listele: {lst1} si {lst2} au acelasi nr de elemente pare: {result}')
 
+def get_intersectia_listelor(lst1,lst2):
+    """
+    Afisati o lista care reprezinta intersectia celor citite de la tastatura
+    :param lst1: prima lista de int-uri
+    :param lst2: a doua lista de int--uri
+    :return: lista ceruta
+    """
+    result=[]
+    for elem in lst1:
+        for num in lst2:
+            if int(elem) == int(num):
+                result.append(num)
+    return result
 
+def test_get_intersectia_listelor():
+    assert get_intersectia_listelor([11,12,13],[11,3,4]) == [11]
+    assert get_intersectia_listelor([11, 12, 13], [11,12, 3, 4]) == [11,12]
+
+def show_intersectia_listelor(lst1,lst2):
+    result=get_intersectia_listelor(lst1,lst2)
+    print(f'Intersecita este: {result}')
 
 def main():
     lst1=[]
@@ -110,7 +130,7 @@ def main():
         elif option =='2':
             show_nr_elem_pare(lst1, lst2)
         elif option == '3':
-            pass
+            show_intersectia_listelor(lst1,lst2)
         elif option == '4':
             pass
         elif option == '5':
@@ -125,4 +145,5 @@ if __name__ == '__main__':
     test_nr_pare_1
     test_nr_pare_2
     test_get_nr_elemente_pare
+    test_get_intersectia_listelor()
     main()
